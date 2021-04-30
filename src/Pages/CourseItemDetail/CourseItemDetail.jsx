@@ -70,7 +70,9 @@ function CourseItemDetail(props) {
           )}
         </div>
       ) : (
-        <div className="waiting">'WAITING'</div>
+        <div className="loading">
+          <h1>LOADING...</h1>
+        </div>
       )}
     </React.Fragment>
   );

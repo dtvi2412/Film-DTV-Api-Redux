@@ -14,6 +14,32 @@ $bg-scroll:#111;
 
     transition: all .5s;
     // padding:20px 0;
+    &__iconClose{
+        display: none;
+    }
+    &__search{
+        position: relative;
+        input{
+            border:none;
+            padding:8px 10px;
+            &:focus{
+                outline: none;
+            }
+            &::placeholder{
+                font-family: cursive;
+            }
+        }
+        &__icon{
+            position: absolute;
+            right:10px;
+            top:50%;
+            transform: translate(0px,-50%);
+            cursor: pointer;
+            & .MuiSvgIcon-root{
+                font-size:1.2rem;
+            }
+        }
+    }
     &__logo{
         width: 150px;
         height: 100px;
@@ -58,4 +84,44 @@ $bg-scroll:#111;
 }
 .headerBgBlack{
     background-color: $bg-scroll;
+    &__iconClose{
+        display: none;
+    }
+}
+@media screen and (max-width:750px) {
+    .header{
+        width: 280px;
+        height: 100%;
+
+        position: fixed;
+        left:0px;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: #2a5b71;
+        &__list{
+            display: flex;
+            flex-direction: column;
+            padding:0;
+            li{
+                margin:15px 0px;
+            }
+        }
+        &__iconClose{
+            display: inline-block;
+            & > .MuiSvgIcon-root{
+                color:#fff;
+            }
+        }
+    }
+    .headerBgBlack{
+        background-color: #38235d;
+        &__iconClose{
+            display: inline-block;
+            & > .MuiSvgIcon-root{
+                color:#fff;
+            }
+        }
+    }
 }
