@@ -8,7 +8,9 @@ import './Course.scss';
 function Course() {
   //Get Data Redux Store
   const getDataFilm = useSelector((data) => data.Course.dataFilm);
-
+  const getValueInputRedux = useSelector(
+    (data) => data.Course.valueInputSearch
+  );
   //Location Slice
   const [location, setLocation] = useState(9);
   //Dispatch Data API down REDUX STORE
@@ -20,10 +22,22 @@ function Course() {
 
   //Render Data Film
   const renderDataFilm = () => {
+    //Filter Data === Value Input Redux
     if (getDataFilm !== []) {
-      return getDataFilm.slice(0, location).map((item, index) => {
-        return <CourseItem key={item.maPhim} item={item} />;
-      });
+      return getDataFilm
+        .filter((val) => {
+          if (getValueInputRedux === '') {
+            return val;
+          } else if (
+            val.tenPhim.toLowerCase().includes(getValueInputRedux.toLowerCase())
+          ) {
+            return val;
+          }
+        })
+        .slice(0, location)
+        .map((item, index) => {
+          return <CourseItem key={item.maPhim} item={item} />;
+        });
     }
   };
   //Handle View More

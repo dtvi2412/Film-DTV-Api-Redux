@@ -29,6 +29,8 @@ function Header(props) {
 
   //Dispatch Id Store
   const handleDispatchIdItem = (id) => {
+    setInput('');
+    inputEl.current.value = '';
     dispatch(fetchCourseDetail(id));
   };
 
@@ -38,6 +40,8 @@ function Header(props) {
     setInput(valueInput);
   };
   const handleDispatchValueInput = () => {
+    setInput('');
+    inputEl.current.value = '';
     dispatch(createAction('VALUE-INPUT-SEARCH', input));
   };
   //Handle Clear Input
