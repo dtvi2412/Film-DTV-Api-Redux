@@ -13,6 +13,8 @@ $bg-scroll:#111;
     z-index: 9999;
 
     transition: all .5s;
+    background: transparent;
+   animation: headerNav 0.5s linear 0s 1 normal;
     // padding:20px 0;
     &__iconClose{
         display: none;
@@ -156,9 +158,26 @@ $bg-scroll:#111;
     }
 }
 .headerBgBlack{
-    background-color: $bg-scroll;
+    // background-color: $bg-scroll;
+    background: #654ea3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transition: all .5s;
     &__iconClose{
         display: none;
+    }
+}
+.menuHambuger{
+    position: fixed;
+    top:20px;
+    left:20px;
+    z-index: 9999;
+    cursor: pointer;
+    & > .MuiSvgIcon-root{
+        color:#fff;
+        font-size:2.5rem;
+      
+       
     }
 }
 @media screen and (max-width:750px) {
@@ -172,7 +191,12 @@ $bg-scroll:#111;
         display: flex;
         flex-direction: column;
 
-        background-color: #2a5b71;
+        // background-color: #2a5b71;   
+        background: #108dc7;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #ef8e38, #108dc7);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #ef8e38, #108dc7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
         &__list{
             display: flex;
             flex-direction: column;
@@ -187,14 +211,28 @@ $bg-scroll:#111;
                 color:#fff;
             }
         }
+        &__search{
+            display: none;
+        }
     }
     .headerBgBlack{
-        background-color: #38235d;
+        // background-color: #38235d;
+        background: #654ea3;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         &__iconClose{
             display: inline-block;
             & > .MuiSvgIcon-root{
                 color:#fff;
             }
         }
+    }
+}
+@keyframes headerNav {
+    0%{
+        transform: translateX(-400px);
+    }
+    100%{
+        transform: translateX(0px);
     }
 }

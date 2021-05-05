@@ -7,3 +7,17 @@ a{
     text-decoration: none;
     color:#111;
 }
+.app__backToTop{
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    color:#fff;
+    z-index: 999;
+    cursor: pointer;
+}
+.app__backToTop > .MuiSvgIcon-root{
+    font-size: 2.5rem;
+}
+.app__backToTop > .MuiSvgIcon-root:hover{
+    color:#baa2fa;
+}

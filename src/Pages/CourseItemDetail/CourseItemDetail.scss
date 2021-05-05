@@ -4,6 +4,7 @@
     &__popupPlayer{
         width:100%;
         height:100%;
+       
         background-color: rgba(0,0,0,0.8);
 
         position: fixed;
@@ -14,6 +15,10 @@
         display:flex;
         justify-content:center;
         align-items:center;
+        &__video{
+            width: 880px;
+            height: 420px;
+        }
         &__icon{
             position: fixed;
             right:80px;
@@ -119,5 +124,90 @@
        font-size:2rem;
        font-family: cursive;
       
+    }
+}
+@media screen and (max-width:930px) {
+    .courseItemDetail{
+        &__popupPlayer{
+            &__video{
+                width:600px;
+                height: 320px;
+            }
+        }
+    }
+}
+@media screen and (max-width:640px) {
+    .courseItemDetail{
+        &__popupPlayer{
+            &__video{
+                width:450px;
+                height: 320px;
+            }
+            &__icon{
+                position: fixed;
+                right:20px;
+            }
+        }
+    }
+}
+@media screen and (max-width:720px) {
+        .courseItemDetail{
+            &__item{
+                &__image{
+                    width:450px;
+                    height: 450px;
+                }
+                
+            }
+        }
+}
+@media screen and (max-width:540px) {
+    .courseItemDetail{
+        &__item{
+            &__image{
+                width:350px;
+                height: 350px;
+            }
+            
+        }
+    }
+}
+@media screen and (max-width:470px) {
+    .courseItemDetail{
+        &__popupPlayer{
+            &__video{
+                width:350px;
+                height: 220px;
+            }
+            &__icon{
+                position: fixed;
+                right:20px;
+            }
+        }
+    }
+}
+@media screen and (max-width:410px) {
+    .courseItemDetail{
+        &__item{
+            &__image{
+                width:240px;
+                height: 240px;
+            }
+        
+        }
+    }
+}
+@media screen and (max-width:380px) {
+    .courseItemDetail{
+        &__popupPlayer{
+            &__video{
+                width:260px;
+                height: 220px;
+            }
+            &__icon{
+                position: fixed;
+                right:20px;
+            }
+        }
     }
 }

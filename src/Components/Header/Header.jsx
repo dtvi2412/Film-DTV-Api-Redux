@@ -8,14 +8,18 @@ import { createAction } from '../../Redux/Action';
 import CancelIcon from '@material-ui/icons/Cancel';
 import ClearIcon from '@material-ui/icons/Clear';
 import { fetchCourseDetail } from '../../Redux/Action/courseAction';
+import MenuIcon from '@material-ui/icons/Menu';
 function Header(props) {
   //Scroll Header
   const [header, setHeader] = useState(false);
+  const [hambuger, setHambuger] = useState(false);
   const dispatch = useDispatch();
   //Value Input
   const [input, setInput] = useState('');
   const inputEl = useRef(null);
+
   const dataFilm = useSelector((state) => state.Course.dataFilm);
+
   //Scroll Header
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -74,60 +78,81 @@ function Header(props) {
         );
       });
   };
+  //Handle Close Header
+  const handleCloseHeader = () => {
+    let headerEl = document.querySelector('#header');
+    headerEl.setAttribute('style', ' transform: translateX(-400px)');
+    setTimeout(() => {
+      setHambuger(true);
+    }, 300);
+  };
   return (
-    <header className={`header  ${header && 'headerBgBlack'}`}>
-      <div className="header__logo">
-        <Link to="/">
-          <img src={logo} alt={`logo`} />
-        </Link>
-      </div>
-      <ul className="header__list">
-        <li>
-          <a href="#">HOME</a>
-        </li>
-        <li>
-          <a href="#">CONTACT</a>
-        </li>
-        <li>
-          <a href="#">HELP</a>
-        </li>
-      </ul>
-      <div className="header__search">
-        <input
-          placeholder="Tìm kiếm gì đó..."
-          onChange={(e) => {
-            handleChangeInput(e);
-          }}
-          ref={inputEl}
-        />
-        {/* Search Icon */}
-        <div
-          className="header__search__icon"
-          onClick={() => handleDispatchValueInput()}
-        >
-          <SearchIcon />
-        </div>
-        {/* Clear Icon */}
-        {input !== '' && (
-          <div
-            className="header__search__clearInput"
-            onClick={() => handleClearInput()}
-          >
-            <ClearIcon />
+    <React.Fragment>
+      {!hambuger ? (
+        <header id="header" className={`header  ${header && 'headerBgBlack'}`}>
+          <div className="header__logo">
+            <Link to="/">
+              <img src={logo} alt={`logo`} />
+            </Link>
           </div>
-        )}
+          <ul className="header__list">
+            <li>
+              <a href="#">HOME</a>
+            </li>
+            <li>
+              <a href="#">CONTACT</a>
+            </li>
+            <li>
+              <a href="#">HELP</a>
+            </li>
+          </ul>
+          <div className="header__search">
+            <input
+              placeholder="Tìm kiếm gì đó..."
+              onChange={(e) => {
+                handleChangeInput(e);
+              }}
+              ref={inputEl}
+            />
+            {/* Search Icon */}
+            <div
+              className="header__search__icon"
+              onClick={() => handleDispatchValueInput()}
+            >
+              <SearchIcon />
+            </div>
+            {/* Clear Icon */}
+            {input !== '' && (
+              <div
+                className="header__search__clearInput"
+                onClick={() => handleClearInput()}
+              >
+                <ClearIcon />
+              </div>
+            )}
 
-        {/* Render 3 ITEM SEARCH */}
-        {input !== '' && (
-          <div className="header__search__dataSearch">{renderListSearch()}</div>
-        )}
-      </div>
-      <div
-        className={`header__iconClose  ${header && 'headerBgBlack__iconClose'}`}
-      >
-        <CancelIcon />
-      </div>
-    </header>
+            {/* Render 3 ITEM SEARCH */}
+            {input !== '' && (
+              <div className="header__search__dataSearch">
+                {renderListSearch()}
+              </div>
+            )}
+          </div>
+          <div
+            className={`header__iconClose  ${
+              header && 'headerBgBlack__iconClose'
+            }`}
+            onClick={() => handleCloseHeader()}
+          >
+            <CancelIcon />
+          </div>
+        </header>
+      ) : (
+        <div className="menuHambuger" onClick={() => setHambuger(false)}>
+          <MenuIcon />
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 
